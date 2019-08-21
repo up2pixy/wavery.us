@@ -1,6 +1,7 @@
 import { WaveryColorInfo } from "../wavery/wavery";
 
 const presetColorPatterns: WaveryColorInfo[][] = [
+  // 1
   [
     {
       colorValue: "#00677a",
@@ -11,16 +12,18 @@ const presetColorPatterns: WaveryColorInfo[][] = [
       position: 1
     }
   ],
+  // 2
   [
     {
-      colorValue: "#e9e6dd",
+      colorValue: "#eeeeee",
       position: 0
     },
     {
-      colorValue: "#696967",
+      colorValue: "#222222",
       position: 1
     }
   ],
+  // 3
   [
     {
       colorValue: "#1e3756",
@@ -31,49 +34,21 @@ const presetColorPatterns: WaveryColorInfo[][] = [
       position: 1
     }
   ],
+  // 4
   [
     {
-      colorValue: "#63ba97",
+      colorValue: "#0b1f5d",
       position: 0
     },
     {
-      colorValue: "#f0ebb4",
+      colorValue: "#00b1c0",
       position: 1
     }
   ],
+  // 5
   [
     {
-      colorValue: "#99bc44",
-      position: 0
-    },
-    {
-      colorValue: "#da2977",
-      position: 1
-    }
-  ],
-  [
-    {
-      colorValue: "#0b2f6d",
-      position: 0
-    },
-    {
-      colorValue: "#0091a0",
-      position: 1
-    }
-  ],
-  [
-    {
-      colorValue: "#4a746a",
-      position: 0
-    },
-    {
-      colorValue: "#b6ddbe",
-      position: 1
-    }
-  ],
-  [
-    {
-      colorValue: "#a23a77",
+      colorValue: "#821a57",
       position: 0
     },
     {
@@ -81,16 +56,7 @@ const presetColorPatterns: WaveryColorInfo[][] = [
       position: 1
     }
   ],
-  [
-    {
-      colorValue: "#006249",
-      position: 0
-    },
-    {
-      colorValue: "#8ea6d2",
-      position: 1
-    }
-  ],
+  // 6
   [
     {
       colorValue: "#3a5065",
@@ -98,6 +64,139 @@ const presetColorPatterns: WaveryColorInfo[][] = [
     },
     {
       colorValue: "#e7d6ab",
+      position: 1
+    }
+  ],
+  // 7
+  [
+    {
+      colorValue: "#fcfddf",
+      position: 0
+    },
+    {
+      colorValue: "#d66b72",
+      position: 1
+    }
+  ],
+  // 8
+  [
+    {
+      colorValue: "#7dc5c1",
+      position: 0
+    },
+    {
+      colorValue: "#3e1744",
+      position: 1
+    }
+  ],
+  // 9
+  [
+    {
+      colorValue: "#007355",
+      position: 0
+    },
+    {
+      colorValue: "#f6cdb9",
+      position: 1
+    }
+  ],
+  // 10
+  [
+    {
+      colorValue: "#3f4d98",
+      position: 0
+    },
+    {
+      colorValue: "#e76f78",
+      position: 1
+    }
+  ],
+  // 11
+  [
+    {
+      colorValue: "#df3f4b",
+      position: 0
+    },
+    {
+      colorValue: "#fee469",
+      position: 1
+    }
+  ],
+  // 12
+  [
+    {
+      colorValue: "#693f71",
+      position: 0
+    },
+    {
+      colorValue: "#b1cae8",
+      position: 1
+    }
+  ],
+  // 13
+  [
+    {
+      colorValue: "#0b2f6d",
+      position: 0
+    },
+    {
+      colorValue: "#eda7c3",
+      position: 1
+    }
+  ],
+  // 14
+  [
+    {
+      colorValue: "#366473",
+      position: 0
+    },
+    {
+      colorValue: "#e7d5ad",
+      position: 1
+    }
+  ],
+  // 15
+  [
+    {
+      colorValue: "#63ba97",
+      position: 0
+    },
+    {
+      colorValue: "#383234",
+      position: 1
+    }
+  ],
+  // 16
+  [
+    {
+      colorValue: "#3976a2",
+      position: 0
+    },
+    {
+      colorValue: "#e9e6dd",
+      position: 1
+    }
+  ],
+  // 17
+  [
+    {
+      colorValue: "#3a5065",
+      position: 0
+    },
+    {
+      colorValue: "#eda086",
+      position: 1
+    }
+  ],
+  // 18
+
+  [
+    {
+      colorValue: "#fdef84",
+      position: 0
+    },
+    {
+      colorValue: "#3d6e71",
       position: 1
     }
   ]
@@ -110,8 +209,8 @@ export const Constants = {
   maxHeight: 4096,
   defaultWidth: 800,
   defaultHeight: 600,
-  defaultTurnCount: 30,
-  defaultLayerCount: 20,
-  defaultVariance: 70,
+  defaultTurnCount: 25,
+  defaultLayerCount: 15,
+  defaultVariance: 80,
   presetColorPatterns
 };

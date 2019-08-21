@@ -11,16 +11,14 @@ function getInitialState(): OptionsState {
     turnCount: Constants.defaultTurnCount,
     layerCount: Constants.defaultLayerCount,
     variance: Constants.defaultVariance,
-    selectedPatternIndex: 0
+    selectedPatternIndex: 0,
+    seed: Date.now().toString()
   };
 }
 
 const initialState: OptionsState = getInitialState();
 
-const reducer: Reducer<OptionsState, ActionObject> = (
-  state = initialState,
-  action: ActionObject
-): OptionsState => {
+const reducer: Reducer<OptionsState, ActionObject> = (state = initialState, action: ActionObject): OptionsState => {
   switch (action.type) {
     case ActionType.UPDATE_WIDTH:
       return { ...state, width: action.width };

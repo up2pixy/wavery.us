@@ -1,4 +1,4 @@
-import { WaveryOption, WaveryColorInfo } from "../wavery/wavery";
+import { WaveryOption } from "../wavery/wavery";
 
 export interface OptionsState {
   width: number;
@@ -7,6 +7,7 @@ export interface OptionsState {
   layerCount: number;
   variance: number;
   selectedPatternIndex: number;
+  seed: string;
 }
 
 export interface SvgState {

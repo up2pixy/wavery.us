@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Typography,
-  Grid,
-  TextField,
-  Slider,
-  InputAdornment
-} from "@material-ui/core";
+import { Typography, Grid, TextField, Slider, InputAdornment } from "@material-ui/core";
 import { returntypeof } from "react-redux-typescript";
 import { State } from "../models/StateTypes";
 import { connect } from "react-redux";
@@ -27,17 +21,16 @@ class ControlPanel extends React.Component<Props, {}> {
     this.props.updateWidth(Number(e.target.value));
   };
 
-  handleHeightChange = (e: any) =>
-    this.props.updateHeight(Number(e.target.value));
+  handleHeightChange = (e: any) => this.props.updateHeight(Number(e.target.value));
 
-  handleLayerCountChange = (e: any) =>
-    this.props.updateLayerCount(Number(e.target.value));
+  handleLayerCountChange = (e: any) => this.props.updateLayerCount(Number(e.target.value));
 
-  handleTurnCountChange = (e: any) =>
-    this.props.updateTurnCount(Number(e.target.value));
+  handleTurnCountChange = (e: any) => this.props.updateTurnCount(Number(e.target.value));
 
   handleVarianceChange = (_event: any, value: any) => {
-    this.props.updateVarianceAndSvg(this.props.options, value);
+    if (value !== this.props.options.variance) {
+      this.props.updateVarianceAndSvg(this.props.options, value);
+    }
   };
 
   handleColorSelectionChange = (index: number) => {
@@ -62,7 +55,7 @@ class ControlPanel extends React.Component<Props, {}> {
       shouldUpdate = true;
     }
     if (shouldUpdate) {
-      this.props.updateSvg(this.props.options);
+      this.props.updateSvg(this.props.options, true);
     }
   };
 
@@ -125,30 +118,27 @@ class ControlPanel extends React.Component<Props, {}> {
             onBlur={this.tryUpdateSvg}
           />
         </Grid>
-        <Grid item xs={12} className={this.props.styles.controlPanelGrid}>
-          <Typography className={this.props.styles.sliderCaption}>
-            Variance
-          </Typography>
+        <Grid container className={this.props.styles.controlPanelGrid} style={{ paddingBottom: "0px" }}>
+          <Typography className={this.props.styles.sliderCaption}>Variance</Typography>
           <Slider
-            defaultValue={50}
+            defaultValue={this.props.options.variance}
             id="variance"
             aria-labelledby="Variance"
             onChange={this.handleVarianceChange}
           />
         </Grid>
-        <Grid container xs={12} className={this.props.styles.controlPanelGrid}>
+        <Grid container className={this.props.styles.controlPanelGrid}>
           <Grid item xs={12}>
-            <Typography className={this.props.styles.sliderCaption}>
-              Color
-            </Typography>
+            <Typography className={this.props.styles.sliderCaption}>Color</Typography>
           </Grid>
           {Constants.presetColorPatterns.map((pattern, index) => {
             return (
-              <Grid container xs={12} justify="center">
+              <Grid container justify="center" key={index}>
                 <ColorButton
                   pattern={pattern}
                   selected={index === this.props.options.selectedPatternIndex}
                   onClick={() => this.handleColorSelectionChange(index)}
+                  index={index + 1}
                 />
               </Grid>
             );

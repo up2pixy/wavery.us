@@ -1,4 +1,5 @@
 import { computeControlPoints } from "./bezier-spline";
+import seedrandom from "seedrandom";
 import chroma from "chroma-js";
 
 export interface Point {
@@ -13,6 +14,7 @@ export interface WaveryOption {
   variance: number;
   strokeWidth: number;
   strokeColor: string;
+  seed: string;
   gradientColors: WaveryColorInfo[];
 }
 
@@ -31,6 +33,7 @@ const defaultOptions: WaveryOption = {
   variance: 0.75,
   strokeWidth: 0,
   strokeColor: "none",
+  seed: Date.now().toString(),
   gradientColors: [
     {
       colorValue: "yellow",
@@ -52,8 +55,10 @@ function generatePoints(
   height: number,
   segmentCount: number,
   layerCount: number,
-  variance: number
+  variance: number,
+  seed: string
 ): Point[][] {
+  let rand_fn = seedrandom(seed);
   const cellWidth = width / segmentCount;
   const cellHeight = height / layerCount;
   const moveLimitX = cellWidth * variance * 0.5;
@@ -64,8 +69,8 @@ function generatePoints(
     const pointsPerLayer: Point[] = [];
     pointsPerLayer.push({ x: 0, y: Math.floor(y) });
     for (let x = cellWidth; x < width; x += cellWidth) {
-      const varietalY = y - moveLimitY / 2 + Math.random() * moveLimitY;
-      const varietalX = x - moveLimitX / 2 + Math.random() * moveLimitX;
+      const varietalY = y - moveLimitY / 2 + rand_fn() * moveLimitY;
+      const varietalX = x - moveLimitX / 2 + rand_fn() * moveLimitX;
       pointsPerLayer.push({
         x: Math.floor(varietalX),
         y: Math.floor(varietalY)
@@ -127,7 +132,8 @@ export class Wavery {
       this.options.height,
       this.options.segmentCount,
       this.options.layerCount,
-      this.options.variance
+      this.options.variance,
+      this.options.seed
     );
   }
 
@@ -139,9 +145,7 @@ export class Wavery {
 
     const colorScale = chroma
       .scale(this.options.gradientColors.map(c => c.colorValue))
-      .domain(
-        this.options.gradientColors.map(c => c.position * this.points.length)
-      );
+      .domain(this.options.gradientColors.map(c => c.position * this.points.length));
 
     // Fill the background first
     const rect = document.createElementNS(svgns, "rect");
@@ -151,11 +155,7 @@ export class Wavery {
     rect.setAttributeNS(null, "width", this.options.width.toString());
     rect.setAttributeNS(null, "fill", colorScale(0).hex());
     rect.setAttributeNS(null, "stroke", this.options.strokeColor);
-    rect.setAttributeNS(
-      null,
-      "stroke-width",
-      this.options.strokeWidth.toString()
-    );
+    rect.setAttributeNS(null, "stroke-width", this.options.strokeWidth.toString());
     svg.appendChild(rect);
 
     // Append each layer of wave

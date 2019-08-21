@@ -14,8 +14,8 @@ export const App = () => {
       fontWeight: "bold"
     },
     root: {
-      position: "absolute",
-      height: "100vh",
+      position: "fixed",
+      height: "calc(var(--vh, 1vh) * 100)",
       [theme.breakpoints.down("xs")]: {
         padding: "56px 0px 0px 0px"
       },
@@ -56,7 +56,8 @@ export const App = () => {
       padding: "20px",
       overflow: "auto",
       alignContent: "flex-start",
-      backgroundColor: "white"
+      backgroundColor: "white",
+      WebkitOverflowScrolling: "touch"
     },
     controlPanelGrid: {
       padding: "10px"

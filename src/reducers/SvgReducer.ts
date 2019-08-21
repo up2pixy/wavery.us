@@ -15,12 +15,11 @@ function getInitialState(): SvgState {
     variance: Constants.defaultVariance / 100,
     strokeWidth: 0,
     strokeColor: "none",
-    gradientColors: Constants.presetColorPatterns[0]
+    gradientColors: Constants.presetColorPatterns[0],
+    seed: Date.now().toString()
   };
   const wavery = new Wavery(defaultOption);
-  const serializedSvgElement: string = new XMLSerializer().serializeToString(
-    wavery.generateSvg()
-  );
+  const serializedSvgElement: string = new XMLSerializer().serializeToString(wavery.generateSvg());
   const encodedData = window.btoa(serializedSvgElement);
   return {
     base64: `data:image/svg+xml;base64,${encodedData}`,
@@ -30,10 +29,7 @@ function getInitialState(): SvgState {
 
 const initialState: SvgState = getInitialState();
 
-const reducer: Reducer<SvgState, ActionObject> = (
-  state = initialState,
-  action: ActionObject
-): SvgState => {
+const reducer: Reducer<SvgState, ActionObject> = (state = initialState, action: ActionObject): SvgState => {
   switch (action.type) {
     case ActionType.UPDATE_SVG:
       return {

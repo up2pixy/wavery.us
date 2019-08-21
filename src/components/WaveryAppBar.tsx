@@ -19,12 +19,7 @@ export const WaveryAppBar = (props: { styles: any }) => {
       C22.785,14.704,21.29,14.815,19.487,14.815z"
           />
         </SvgIcon>
-        <Typography
-          variant="h6"
-          color="inherit"
-          noWrap
-          className={props.styles.title}
-        >
+        <Typography variant="h6" color="inherit" noWrap className={props.styles.title}>
           Wavery.us
         </Typography>
       </Toolbar>

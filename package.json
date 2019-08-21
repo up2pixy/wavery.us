@@ -12,6 +12,7 @@
     "@types/react-redux": "^7.1.1",
     "@types/react-router-dom": "^4.3.4",
     "@types/redux-logger": "^3.0.7",
+    "@types/seedrandom": "^2.4.28",
     "react": "^16.8.6",
     "react-color": "^2.17.3",
     "react-dom": "^16.8.6",
@@ -22,6 +23,7 @@
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "seedrandom": "^3.0.3",
     "typescript": "3.4.5",
     "wavery": "^0.0.10"
   },

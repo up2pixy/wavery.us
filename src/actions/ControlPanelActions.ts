@@ -22,18 +22,13 @@ export const updateTurnCount = (count: number): ActionObject => ({
   type: ActionType.UPDATE_TURNCOUNT,
   count
 });
-export const updateVarianceAndSvg = (
-  options: OptionsState,
-  factor: number
-): ThunkAction<void, State, null, Action> => {
+export const updateVarianceAndSvg = (options: OptionsState, factor: number): ThunkAction<void, State, null, Action> => {
   return (dispatch: ThunkDispatch<ActionObject, void, Action>): void => {
     dispatch({
       type: ActionType.UPDATE_VARIANCE,
       factor
     });
-    if (factor !== options.variance) {
-      dispatch(updateSvg({ ...options, variance: factor }));
-    }
+    dispatch(updateSvg({ ...options, variance: factor }, false));
   };
 };
 
@@ -46,11 +41,11 @@ export const updateColorSelectionAndSvg = (
       type: ActionType.UPDATE_COLOR_SELECTION,
       colorPatternIndex: index
     });
-    dispatch(updateSvg({ ...options, selectedPatternIndex: index }));
+    dispatch(updateSvg({ ...options, selectedPatternIndex: index }, false));
   };
 };
 
-export const updateSvg = (options: OptionsState): ActionObject => {
+export const updateSvg = (options: OptionsState, newSeed: boolean): ActionObject => {
   const waveryOption: WaveryOption = {
     width: options.width,
     height: options.height,
@@ -59,12 +54,11 @@ export const updateSvg = (options: OptionsState): ActionObject => {
     variance: options.variance / 100,
     strokeWidth: 0,
     strokeColor: "none",
-    gradientColors: Constants.presetColorPatterns[options.selectedPatternIndex]
+    gradientColors: Constants.presetColorPatterns[options.selectedPatternIndex],
+    seed: newSeed ? Date.now().toString() : options.seed
   };
   const wavery = new Wavery(waveryOption);
-  const serializedSvgElement: string = new XMLSerializer().serializeToString(
-    wavery.generateSvg()
-  );
+  const serializedSvgElement: string = new XMLSerializer().serializeToString(wavery.generateSvg());
   const encodedData = window.btoa(serializedSvgElement);
   return {
     type: ActionType.UPDATE_SVG,
