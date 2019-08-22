@@ -58,11 +58,13 @@ export const updateSvg = (options: OptionsState, newSeed: boolean): ActionObject
     seed: newSeed ? Date.now().toString() : options.seed
   };
   const wavery = new Wavery(waveryOption);
-  const serializedSvgElement: string = new XMLSerializer().serializeToString(wavery.generateSvg());
+  const svgElement = wavery.generateSvg();
+  const serializedSvgElement: string = new XMLSerializer().serializeToString(svgElement);
   const encodedData = window.btoa(serializedSvgElement);
   return {
     type: ActionType.UPDATE_SVG,
     base64: `data:image/svg+xml;base64,${encodedData}`,
-    option: waveryOption
+    option: waveryOption,
+    svgElement
   };
 };

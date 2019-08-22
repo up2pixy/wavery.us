@@ -1,4 +1,4 @@
-import { WaveryColorInfo } from "../wavery/wavery";
+import { WaveryColorInfo, WaveryOption } from "../wavery/wavery";
 
 const presetColorPatterns: WaveryColorInfo[][] = [
   // 1
@@ -200,17 +200,35 @@ const presetColorPatterns: WaveryColorInfo[][] = [
     }
   ]
 ];
+const defaultWidth: number = 1600;
+const defaultHeight: number = 1200;
+const defaultTurnCount: number = 25;
+const defaultLayerCount: number = 10;
+const defaultVariance: number = 80;
+const defaultColorPatternIndex: number = Math.floor(Math.random() * (presetColorPatterns.length - 1));
+const defaultOption: WaveryOption = {
+  width: defaultWidth,
+  height: defaultHeight,
+  segmentCount: defaultTurnCount,
+  layerCount: defaultLayerCount,
+  variance: defaultVariance / 100,
+  strokeWidth: 0,
+  strokeColor: "none",
+  gradientColors: presetColorPatterns[defaultColorPatternIndex],
+  seed: Date.now().toString()
+};
 
 export const Constants = {
   minWidth: 10,
   maxWidth: 4096,
   minHeight: 10,
   maxHeight: 4096,
-  defaultWidth: 1600,
-  defaultHeight: 1200,
-  defaultTurnCount: 25,
-  defaultLayerCount: 10,
-  defaultVariance: 80,
+  defaultWidth,
+  defaultHeight,
+  defaultTurnCount,
+  defaultLayerCount,
+  defaultVariance,
   presetColorPatterns,
-  defaultColorPatternIndex: Math.floor(Math.random() * (presetColorPatterns.length - 1))
+  defaultColorPatternIndex,
+  defaultOption
 };

@@ -3,27 +3,18 @@ import { ActionObject } from "../models/ActionObject";
 import { SvgState } from "../models/StateTypes";
 import { Reducer } from "redux";
 import { Constants } from "../models/Constants";
-import { Wavery, WaveryOption } from "../wavery/wavery";
+import { Wavery } from "../wavery/wavery";
 //import { Wavery, WaveryOption } from "wavery";
 
 function getInitialState(): SvgState {
-  const defaultOption: WaveryOption = {
-    width: Constants.defaultWidth,
-    height: Constants.defaultHeight,
-    segmentCount: Constants.defaultTurnCount,
-    layerCount: Constants.defaultLayerCount,
-    variance: Constants.defaultVariance / 100,
-    strokeWidth: 0,
-    strokeColor: "none",
-    gradientColors: Constants.presetColorPatterns[Constants.defaultColorPatternIndex],
-    seed: Date.now().toString()
-  };
-  const wavery = new Wavery(defaultOption);
-  const serializedSvgElement: string = new XMLSerializer().serializeToString(wavery.generateSvg());
+  const wavery = new Wavery(Constants.defaultOption);
+  const svgElement = wavery.generateSvg();
+  const serializedSvgElement: string = new XMLSerializer().serializeToString(svgElement);
   const encodedData = window.btoa(serializedSvgElement);
   return {
     base64: `data:image/svg+xml;base64,${encodedData}`,
-    option: defaultOption
+    option: Constants.defaultOption,
+    svgElement
   };
 }
 
@@ -35,7 +26,8 @@ const reducer: Reducer<SvgState, ActionObject> = (state = initialState, action: 
       return {
         ...state,
         base64: action.base64,
-        option: action.option
+        option: action.option,
+        svgElement: action.svgElement
       };
     default:
       return state;

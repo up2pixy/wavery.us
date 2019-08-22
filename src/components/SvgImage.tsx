@@ -13,7 +13,7 @@ class SvgImage extends React.Component<Props, {}> {
           maxHeight: "100%",
           maxWidth: "100%"
         }}
-        src={this.props.svg.base64}
+        src={this.props.base64}
         alt="SVG"
       />
     );
@@ -22,7 +22,7 @@ class SvgImage extends React.Component<Props, {}> {
 
 const mapStateToProps = (state: State) => {
   return {
-    svg: state.svg
+    base64: state.svg.base64
   };
 };
 
