@@ -189,7 +189,6 @@ const presetColorPatterns: WaveryColorInfo[][] = [
     }
   ],
   // 18
-
   [
     {
       colorValue: "#fdef84",
@@ -207,10 +206,11 @@ export const Constants = {
   maxWidth: 4096,
   minHeight: 10,
   maxHeight: 4096,
-  defaultWidth: 800,
-  defaultHeight: 600,
+  defaultWidth: 1600,
+  defaultHeight: 1200,
   defaultTurnCount: 25,
-  defaultLayerCount: 15,
+  defaultLayerCount: 10,
   defaultVariance: 80,
-  presetColorPatterns
+  presetColorPatterns,
+  defaultColorPatternIndex: Math.floor(Math.random() * (presetColorPatterns.length - 1))
 };

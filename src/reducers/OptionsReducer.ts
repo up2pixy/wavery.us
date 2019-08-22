@@ -11,7 +11,7 @@ function getInitialState(): OptionsState {
     turnCount: Constants.defaultTurnCount,
     layerCount: Constants.defaultLayerCount,
     variance: Constants.defaultVariance,
-    selectedPatternIndex: 0,
+    selectedPatternIndex: Constants.defaultColorPatternIndex,
     seed: Date.now().toString()
   };
 }

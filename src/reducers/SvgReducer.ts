@@ -15,7 +15,7 @@ function getInitialState(): SvgState {
     variance: Constants.defaultVariance / 100,
     strokeWidth: 0,
     strokeColor: "none",
-    gradientColors: Constants.presetColorPatterns[0],
+    gradientColors: Constants.presetColorPatterns[Constants.defaultColorPatternIndex],
     seed: Date.now().toString()
   };
   const wavery = new Wavery(defaultOption);
