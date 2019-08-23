@@ -8,13 +8,11 @@ import { Wavery } from "../wavery/wavery";
 
 function getInitialState(): SvgState {
   const wavery = new Wavery(Constants.defaultOption);
-  const svgElement = wavery.generateSvg();
-  const serializedSvgElement: string = new XMLSerializer().serializeToString(svgElement);
+  const serializedSvgElement: string = new XMLSerializer().serializeToString(wavery.generateSvg());
   const encodedData = window.btoa(serializedSvgElement);
   return {
     base64: `data:image/svg+xml;base64,${encodedData}`,
-    option: Constants.defaultOption,
-    svgElement
+    option: Constants.defaultOption
   };
 }
 
@@ -26,8 +24,7 @@ const reducer: Reducer<SvgState, ActionObject> = (state = initialState, action: 
       return {
         ...state,
         base64: action.base64,
-        option: action.option,
-        svgElement: action.svgElement
+        option: action.option
       };
     default:
       return state;

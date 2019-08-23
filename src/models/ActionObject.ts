@@ -35,7 +35,6 @@ export interface UpdateSvg {
   type: ActionType.UPDATE_SVG;
   base64: string;
   option: WaveryOption;
-  svgElement: SVGElement;
 }
 
 export type ActionObject =

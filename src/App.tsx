@@ -27,20 +27,20 @@ export const App = () => {
     previewGrid: {
       [theme.breakpoints.down("sm")]: {
         height: "50%",
-        width: "100%",
-        padding: "20px"
+        width: "100%"
       },
       [theme.breakpoints.up("md")]: {
         width: "70%",
-        height: "100%",
-        padding: "40px"
+        height: "100%"
       },
       [theme.breakpoints.up("lg")]: {
         width: "75%"
       },
+      padding: "40px",
       backgroundColor: "grey",
       alignItems: "center",
-      justifyContent: "center"
+      justifyContent: "center",
+      position: "relative"
     },
     controlPanelRoot: {
       [theme.breakpoints.down("sm")]: {

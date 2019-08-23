@@ -13,7 +13,6 @@ export interface OptionsState {
 export interface SvgState {
   base64: string;
   option: WaveryOption;
-  svgElement: SVGElement;
 }
 
 export interface State {
