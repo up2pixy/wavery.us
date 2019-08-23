@@ -47,7 +47,12 @@ class PreviewPanel extends React.Component<Props, {}> {
     return (
       <React.Fragment>
         <SvgImage />
-        <Fab variant="extended" aria-label="Download" style={{ margin: 0, bottom: 20, position: "absolute" }}>
+        <Fab
+          variant="extended"
+          aria-label="Download"
+          style={{ margin: 0, bottom: 20, position: "absolute" }}
+          onClick={this.handleDownloadButtonClick}
+        >
           <CloudDownloadIcon style={{ margin: "0 10 0 0" }} color="primary" />{" "}
           <Typography color="primary" noWrap style={{ textTransform: "capitalize" }}>
             Download
