@@ -14,13 +14,6 @@ const styles = {
   }
 };
 
-function generateLinearGradientStyle(pattern: WaveryColorInfo[]): string {
-  let result: string = pattern
-    .map((colorInfo: WaveryColorInfo) => `${colorInfo.colorValue} ${colorInfo.position * 100}%`)
-    .reduce((output: string, colorInfoString: string) => `${output}, ${colorInfoString}`);
-  return `linear-gradient(90deg, ${result}`;
-}
-
 function ColorButton(props: {
   classes: any;
   pattern: WaveryColorInfo[];
@@ -28,6 +21,13 @@ function ColorButton(props: {
   index: number;
   onClick: () => void;
 }) {
+  const generateLinearGradientStyle = (pattern: WaveryColorInfo[]): string => {
+    let result: string = pattern
+      .map((colorInfo: WaveryColorInfo) => `${colorInfo.colorValue} ${colorInfo.position * 100}%`)
+      .reduce((output: string, colorInfoString: string) => `${output}, ${colorInfoString}`);
+    return `linear-gradient(90deg, ${result}`;
+  };
+
   return (
     <Button
       className={props.classes.colorButtonStyle}

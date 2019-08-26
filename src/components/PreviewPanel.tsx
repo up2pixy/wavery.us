@@ -2,9 +2,8 @@ import React from "react";
 import { returntypeof } from "react-redux-typescript";
 import { State } from "../models/StateTypes";
 import { connect } from "react-redux";
-import SvgImage from "./SvgImage";
-import { Fab, Typography } from "@material-ui/core";
-import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
+import { SvgImage } from "./SvgImage";
+import { DownloadButton } from "./DownloadButton";
 
 class PreviewPanel extends React.Component<Props, {}> {
   svgUriToPngUri = (svgDataUrl: string, width: number, height: number): string => {
@@ -36,7 +35,7 @@ class PreviewPanel extends React.Component<Props, {}> {
     document.body.removeChild(link);
   };
 
-  onDownloadButtonClicked = () => {
+  onDownloadButtonClick = () => {
     const pngUri = this.svgUriToPngUri(this.props.svgBase64, this.props.svgWidth, this.props.svgHeight);
     this.download(pngUri, "Wavery.png");
   };
@@ -44,18 +43,8 @@ class PreviewPanel extends React.Component<Props, {}> {
   render() {
     return (
       <React.Fragment>
-        <SvgImage />
-        <Fab
-          variant="extended"
-          aria-label="Download"
-          style={{ margin: 0, bottom: 20, position: "absolute" }}
-          onClick={this.onDownloadButtonClicked}
-        >
-          <CloudDownloadIcon style={{ margin: "0 10 0 0" }} color="primary" />{" "}
-          <Typography color="primary" noWrap style={{ textTransform: "capitalize" }}>
-            Download
-          </Typography>
-        </Fab>
+        <SvgImage url={this.props.svgBase64} />
+        <DownloadButton onClick={this.onDownloadButtonClick} />
       </React.Fragment>
     );
   }

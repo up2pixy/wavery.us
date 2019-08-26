@@ -1,18 +1,11 @@
 import React from "react";
 import { CssBaseline, Grid, makeStyles } from "@material-ui/core";
-import WaveryAppBar from "./components/WaveryAppBar";
+import { WaveryAppBar } from "./components/WaveryAppBar";
 import ControlPanel from "./components/ControlPanel";
 import PreviewPanel from "./components/PreviewPanel";
 
 export const App = () => {
   const useStyles = makeStyles(theme => ({
-    icon: {
-      marginRight: theme.spacing(2)
-    },
-    title: {
-      fontFamily: "Raleway",
-      fontWeight: "bold"
-    },
     root: {
       position: "fixed",
       height: "calc(var(--vh, 1vh) * 100)",
@@ -71,10 +64,11 @@ export const App = () => {
     }
   }));
   const classes = useStyles();
+
   return (
     <React.Fragment>
       <CssBaseline />
-      <WaveryAppBar styles={classes} />
+      <WaveryAppBar />
       <Grid container className={classes.root}>
         <Grid container className={classes.previewGrid}>
           <PreviewPanel />
