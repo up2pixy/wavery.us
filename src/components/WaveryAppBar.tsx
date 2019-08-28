@@ -1,6 +1,7 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, SvgIcon, makeStyles } from "@material-ui/core";
 import { AboutButton } from "./AboutButton";
+import { BuyCoffeeButton } from "./BuyCoffeeButton";
 
 export const WaveryAppBar = () => {
   const useStyles = makeStyles(theme => ({
@@ -36,6 +37,7 @@ export const WaveryAppBar = () => {
           <Typography variant="h6" color="inherit" noWrap className={classes.title}>
             Wavery.us
           </Typography>
+          <BuyCoffeeButton />
           <AboutButton />
         </Toolbar>
       </AppBar>
